@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+body {
+  /* padding: 50px; */
+  background-color: black;
+  /* font: 18px "Lucida Grande", Helvetica, Arial, sans-serif; */
+  font-family:'Open Sans', sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+.form-group{
+ padding: 20px;
+}
+.text-left{
+  text-align: left;
+}
+.center-div{
+  padding-top: 10%;
+}
+.btn .btn-success{
+  padding: 4em 2em;
+}
+form{
+  padding: 0 3em;
+}
