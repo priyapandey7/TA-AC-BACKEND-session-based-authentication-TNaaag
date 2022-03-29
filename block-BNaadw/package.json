@@ -9,6 +9,7 @@
   "author": "AltCampus",
   "license": "GNU GPL V3",
   "dependencies": {
+    "express-session": "^1.17.2",
     "jest": "^26.0.1"
   }
 }
