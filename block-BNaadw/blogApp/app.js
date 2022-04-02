@@ -5,12 +5,12 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 mongoose = require("mongoose")
 passport = require("passport")
-var flash = require('connect-flash');
+var flash = require('flash');
 var session = require('express-session');
-// LocalStrategy = require("passport-local"),
-// passportLocalMongoose =
-//     require("passport-local-mongoose"),
-// User = require("./models/user");
+LocalStrategy = require("passport-local"),
+passportLocalMongoose =
+    require("passport-local"),
+User = require("./models/User");
 
 
 var indexRouter = require('./routes/index');
@@ -29,7 +29,7 @@ mongoose.connect(
 var app = express();
 
 app.use(require("express-session")({
-  secret: "Rusty is a dog",
+  secret: "express work",
   resave: false,
   saveUninitialized: false
 }));
@@ -46,15 +46,15 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(
-  session({
-    secret: process.env.SECRET,
-    resave: false,
-    saveUninitialized: false,
-    // store: new MongoStore({ mongooseConnection: mongoose.connection }),
-    store: MongoStore.create({ mongoUrl: 'mongodb://localhost/blogApp' }),
-  })
-);
+// app.use(
+//   session({
+//     secret: process.env.SECRET,
+//     resave: false,
+//     saveUninitialized: false,
+//     store: new MongoStore({ mongooseConnection: mongoose.connection }),
+//     store: MongoStore.create({ mongoUrl: 'mongodb://localhost/blogApp' }),
+//   })
+// );
 
 app.use(flash());
 
@@ -62,8 +62,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/articles', articleRouter);
 
-// ROUTES
-//=====================
+/* ================== ROUTES =====================  */
  
 // Showing home page
 app.get("/", function (req, res) {
@@ -90,7 +89,6 @@ app.post("/register", function (req, res) {
             console.log(err);
             return res.render("register");
         }
- 
         passport.authenticate("local")(
             req, res, function () {
             res.render("secret");
@@ -144,4 +142,5 @@ app.use(function(err, req, res, next) {
 app.listen(3000,() =>{
   console.log('server is listning on port 3k');
 })
+
 module.exports = app;
