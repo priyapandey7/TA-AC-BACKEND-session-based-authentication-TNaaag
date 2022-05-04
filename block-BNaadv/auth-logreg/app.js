@@ -49,6 +49,7 @@ app.use(
     }),
   })
 );
+//flash middleware
 app.use(flash());
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
