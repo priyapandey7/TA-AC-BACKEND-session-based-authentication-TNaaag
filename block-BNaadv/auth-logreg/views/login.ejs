@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--Title-->
+    <title>Register</title>
+    <!--Font Awesome-->
+    <script
+      src="https://kit.fontawesome.com/5cc6fb9f6b.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <!--Header-->
+    <header>
+      <h1 style="text-align: center; font-size: 3rem">Login</h1>
+    </header>
+    <!--Main-->
+    <main style="text-align: center">
+      <% if(error){ %>
+      <p style="color: red"><%= error %></p>
+      <% } %>
+      <form action="/users/login" method="POST">
+        <input type="text" name="email" placeholder="Email" />
+        <input type="password" name="password" placeholder="P@s$w0rd" />
+        <input type="submit" value="Login" />
+      </form>
+    </main>
+  </body>
+</html>
